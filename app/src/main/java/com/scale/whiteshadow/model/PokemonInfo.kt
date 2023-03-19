@@ -1,11 +1,15 @@
 package com.scale.whiteshadow.model
 
 data class Pokemons(
-    val pokemonList: List<Info>
+    val count: Int,
+    val next: String,
+    val previous: String,
+    val results: List<Info>
 )
 
 data class PokemonInfo(
-    val pokemonAbilities: List<PokemonAbilities>,
+    val abilities: List<PokemonAbilities>,
+    val baseExperience: Int,
     val forms: List<FormsContent>,
     val gameIndices: List<GameIndex>,
     val height: Int,
@@ -14,25 +18,23 @@ data class PokemonInfo(
     val isDefault: Boolean,
     val locationAreaEncounters: String,
     val moves: List<Moves>,
+    val name: String,
+    val order: Int,
     val species: Info,
     val sprites: SpritesContent,
     val stats: List<Stats>,
-    val types: List<Types>
+    val types: List<Types>,
+    val weight: Int
 )
 
 data class PokemonAbilities(
-    val abilities: Ability,
+    val ability: Info,
     val isHidden: Boolean,
     val slot: Int
 )
 
-data class Ability(
-    val name: String,
-    val url: String,
-)
-
 data class FormsContent(
-    val contents: List<Info>
+    val info: Info
 )
 
 data class Info(
@@ -57,8 +59,7 @@ data class Detail(
 
 data class Moves(
     val move: Move,
-    val name: String,
-    val order: Int
+    val versionGroupDetails: List<VersionGroupDetail>
 )
 
 data class Move(
@@ -68,7 +69,8 @@ data class Move(
 
 data class VersionGroupDetail(
     val levelLearnedAt: Int,
-    val moveLearnMethod: Info
+    val moveLearnMethod: Info,
+    val versionGroup: Info
 )
 
 data class SpritesContent(
@@ -78,7 +80,17 @@ data class SpritesContent(
     val backShinyFemale: String?,
     val frontDefault: String?,
     val frontShiny: String?,
-    val frontShinyFemale: String?
+    val frontShinyFemale: String?,
+    val other: OtherSprites
+)
+
+data class OtherSprites(
+    val dreamWorld: Content
+)
+
+data class Content(
+    val frontDefault: String?,
+    val frontFemale: String?
 )
 
 data class Stats(
@@ -88,11 +100,6 @@ data class Stats(
 )
 
 data class Types(
-    val type: Type,
-    val weight: Int
-)
-
-data class Type(
     val slot: Int,
     val type: Info
 )

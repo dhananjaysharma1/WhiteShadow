@@ -2,7 +2,6 @@ package com.scale.whiteshadow.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +19,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -29,16 +29,27 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.android.material.R.drawable.ic_search_black_24
 import com.scale.whiteshadow.R
+import com.scale.whiteshadow.data.MainViewModel
+import com.scale.whiteshadow.ui.components.PokemonGrid
 
+
+@Composable
+fun PokedexSearchScreen(mainViewModel: MainViewModel) {
+//    val infoList by mainViewModel.pokemonInfoList.observeAsState()
+
+    PokedexSearchScreenContent(mainViewModel)
+
+}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokedexSearchScreen() {
+fun PokedexSearchScreenContent(mainViewModel: MainViewModel) {
+    val infoList by mainViewModel.pokemonInfoList.observeAsState()
+
     var textInput by remember { mutableStateOf("") }
 
     Column(
@@ -103,12 +114,14 @@ fun PokedexSearchScreen() {
                 Text(modifier = Modifier.align(Alignment.Center), text = "#", color = Color.Red)
             }
         }
-
+        if (infoList != null) {
+            PokemonGrid(modifier = Modifier.padding(top = 24.dp), pokemonList = infoList!!)
+        }
     }
 }
 
 @Composable
 @Preview(name = "PokedexSearchScreenPreview")
 private fun PokedexSearchScreenPreview() {
-    PokedexSearchScreen()
+//    PokedexSearchScreenContent(listOf(Test(), Test(), Test(), Test()))
 }

@@ -7,12 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.scale.whiteshadow.data.MainViewModel
-import com.scale.whiteshadow.data.PokemonRepository
-import com.scale.whiteshadow.databinding.FragmentFirstBinding
 import com.scale.whiteshadow.ui.screens.PokedexSearchScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,21 +17,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class FirstFragment : Fragment() {
 
-//    private var _binding: FragmentFirstBinding? = null
     private val viewModel by viewModel<MainViewModel>()
-
-//    // This property is only valid between onCreateView and
-//    // onDestroyView.
-//    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        observePokemonData()
+    ): View {
         return ComposeView(requireContext()).apply {
-            setContent {
-                PokedexSearchScreen()
+            viewModel.pokemonInfoList.observe(viewLifecycleOwner) {
+                setContent {
+                    PokedexSearchScreen(viewModel)
+                }
             }
         }
 
@@ -44,16 +35,6 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        binding.buttonFirst.setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-//        }
-    }
-
-    private fun observePokemonData() {
-        viewModel.pokemonData.observe(viewLifecycleOwner) {
-
-        }
     }
 
     override fun onDestroyView() {

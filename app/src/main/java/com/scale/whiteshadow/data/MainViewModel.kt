@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.scale.whiteshadow.data.PokemonRepository.GetPokemonResponse
 import com.scale.whiteshadow.model.PokemonInfo
+import com.scale.whiteshadow.model.Pokemons
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
@@ -14,23 +15,29 @@ class MainViewModel(
     private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val _pokemonData = MutableLiveData<PokemonInfo>()
-    val pokemonData: LiveData<PokemonInfo> = _pokemonData
+    private var infoList: MutableList<PokemonInfo> = mutableListOf()
+
+    private val _pokemonList = MutableLiveData<Pokemons>()
+    val pokemonList: LiveData<Pokemons> = _pokemonList
+
+    private val _pokemonInfoList = MutableLiveData<List<PokemonInfo>>()
+    val pokemonInfoList: LiveData<List<PokemonInfo>> = _pokemonInfoList
+
+    private val _selectedPokemon = MutableLiveData<PokemonInfo>()
+    val selectedPokemon: LiveData<PokemonInfo> = _selectedPokemon
 
     init {
         viewModelScope.launch(ioDispatcher) {
-            val whiteShadowResponse = pokemonRepo.getPokemons()
-            if (whiteShadowResponse is GetPokemonResponse.SuccessInfo) {
-                _pokemonData.postValue(whiteShadowResponse.content)
-            }
-        }
-    }
-
-    private fun getPokemonInfo() {
-        viewModelScope.launch(ioDispatcher) {
-            val whiteShadowResponse = pokemonRepo.getPokemonInfo()
-            if (whiteShadowResponse is GetPokemonResponse.SuccessInfo) {
-                _pokemonData.postValue(whiteShadowResponse.content)
+            val response = pokemonRepo.getPokemons(limit = 40, offset = 0)
+            if (response is GetPokemonResponse.Success) {
+                _pokemonList.postValue(response.content)
+                response.content.results.forEach {
+                    val infoResponse = pokemonRepo.fetchURL(it.url)
+                    if (infoResponse is GetPokemonResponse.SuccessInfo) {
+                        infoList.add(infoResponse.pokemonInfo)
+                        _pokemonInfoList.postValue(infoList)
+                    }
+                }
             }
         }
     }
