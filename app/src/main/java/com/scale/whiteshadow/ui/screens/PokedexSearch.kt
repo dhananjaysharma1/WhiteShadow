@@ -29,25 +29,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.android.material.R.drawable.ic_search_black_24
 import com.scale.whiteshadow.R
 import com.scale.whiteshadow.data.MainViewModel
+import com.scale.whiteshadow.model.PokemonInfo
 import com.scale.whiteshadow.ui.components.PokemonGrid
 
-
-@Composable
-fun PokedexSearchScreen(mainViewModel: MainViewModel) {
-//    val infoList by mainViewModel.pokemonInfoList.observeAsState()
-
-    PokedexSearchScreenContent(mainViewModel)
-
-}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokedexSearchScreenContent(mainViewModel: MainViewModel) {
+fun PokedexSearchScreenContent(mainViewModel: MainViewModel, onClick: (pokemonInfo: PokemonInfo)-> Unit) {
     val infoList by mainViewModel.pokemonInfoList.observeAsState()
 
     var textInput by remember { mutableStateOf("") }
@@ -115,13 +107,9 @@ fun PokedexSearchScreenContent(mainViewModel: MainViewModel) {
             }
         }
         if (infoList != null) {
-            PokemonGrid(modifier = Modifier.padding(top = 24.dp), pokemonList = infoList!!)
+            PokemonGrid(modifier = Modifier.padding(top = 24.dp), pokemonList = infoList!!, onClick = { content ->
+                onClick(content)
+            })
         }
     }
-}
-
-@Composable
-@Preview(name = "PokedexSearchScreenPreview")
-private fun PokedexSearchScreenPreview() {
-//    PokedexSearchScreenContent(listOf(Test(), Test(), Test(), Test()))
 }

@@ -59,7 +59,7 @@ object Dependencies {
     private val viewModelModule = module {
         single { Dispatchers.IO as CoroutineDispatcher }
 
-        viewModel { MainViewModel(pokemonRepo = get(), ioDispatcher = get()) }
+        single { MainViewModel(pokemonRepo = get(), ioDispatcher = get()) }
     }
 
 

@@ -1,6 +1,7 @@
 package com.scale.whiteshadow.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
@@ -25,13 +26,14 @@ import com.scale.whiteshadow.R
 import java.util.Locale
 
 @Composable
-fun PokemonTile(id: Int, name: String, imageUrl: String?) {
+fun PokemonTile(id: Int, name: String, imageUrl: String?, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .aspectRatio(1f)
             .padding(2.dp)
             .shadow(elevation = 4.dp, shape = RoundedCornerShape(6.dp))
             .background(Color.White, shape = RoundedCornerShape(6.dp))
+            .clickable { onClick() }
     ) {
         Text(
             modifier = Modifier
@@ -67,5 +69,5 @@ fun PokemonTile(id: Int, name: String, imageUrl: String?) {
 @Composable
 @Preview(name = "PokemonTilePreview")
 private fun PokemonTilePreview() {
-    PokemonTile(id = 999, name = "Bulbasaur", imageUrl = "")
+    PokemonTile(id = 999, name = "Bulbasaur", imageUrl = "") { }
 }

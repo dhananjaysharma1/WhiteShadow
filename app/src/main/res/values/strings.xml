@@ -12,4 +12,6 @@
 
     <string name="pokeball">Pokeball icon</string>
     <string name="pokemon_image">Pokemon image</string>
+    <string name="about">About</string>>
+    <string name="base_stats">Base Stats</string>
 </resources>

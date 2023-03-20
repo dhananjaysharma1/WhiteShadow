@@ -1,5 +1,6 @@
 package com.scale.whiteshadow.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,10 +24,15 @@ class MainViewModel(
     private val _pokemonInfoList = MutableLiveData<List<PokemonInfo>>()
     val pokemonInfoList: LiveData<List<PokemonInfo>> = _pokemonInfoList
 
-    private val _selectedPokemon = MutableLiveData<PokemonInfo>()
-    val selectedPokemon: LiveData<PokemonInfo> = _selectedPokemon
+    val selectedPokemon = MutableLiveData<PokemonInfo>()
 
     init {
+        if (_pokemonInfoList.value.isNullOrEmpty()) {
+            fetchPokeDex()
+        }
+    }
+
+    private fun fetchPokeDex() {
         viewModelScope.launch(ioDispatcher) {
             val response = pokemonRepo.getPokemons(limit = 40, offset = 0)
             if (response is GetPokemonResponse.Success) {

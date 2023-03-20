@@ -1,14 +1,14 @@
 package com.scale.whiteshadow
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.scale.whiteshadow.data.MainViewModel
-import com.scale.whiteshadow.ui.screens.PokedexSearchScreen
+import com.scale.whiteshadow.ui.screens.PokedexSearchScreenContent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -26,7 +26,10 @@ class FirstFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             viewModel.pokemonInfoList.observe(viewLifecycleOwner) {
                 setContent {
-                    PokedexSearchScreen(viewModel)
+                    PokedexSearchScreenContent(viewModel, onClick = {   pokemonInfo ->
+                        viewModel.selectedPokemon.postValue(pokemonInfo)
+                        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                    })
                 }
             }
         }
