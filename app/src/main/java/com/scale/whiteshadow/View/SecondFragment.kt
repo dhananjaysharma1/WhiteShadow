@@ -1,7 +1,6 @@
 package com.scale.whiteshadow.View
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +12,6 @@ import com.scale.whiteshadow.data.MainViewModel
 import com.scale.whiteshadow.ui.screens.PokemonInfoScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
 class SecondFragment : Fragment() {
 
     private val viewModel by viewModel<MainViewModel>()
@@ -27,19 +23,11 @@ class SecondFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             viewModel.selectedPokemon.observe(viewLifecycleOwner) {
                 setContent {
-                    Log.d("HereBeCode:", "onCreateView: $it")
-                    PokemonInfoScreen(content = it, onBackPressed = { findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment) })
+                    PokemonInfoScreen(
+                        content = it,
+                        onBackPressed = { findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment) })
                 }
             }
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 }

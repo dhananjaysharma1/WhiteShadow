@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
-import com.google.android.material.R.drawable.ic_arrow_back_black_24
 import com.scale.whiteshadow.R
 import com.scale.whiteshadow.model.PokemonInfo
 import com.scale.whiteshadow.ui.components.PokemonAboutInfo
@@ -56,7 +55,7 @@ fun PokemonInfoScreen(content: PokemonInfo, onBackPressed: () -> Unit) {
                         .align(Alignment.CenterStart)
                         .size(40.dp)
                         .clickable { onBackPressed() },
-                    painter = painterResource(id = ic_arrow_back_black_24),
+                    painter = painterResource(id = R.drawable.ic_arrow_white),
                     contentDescription = ""
                 )
                 Text(
