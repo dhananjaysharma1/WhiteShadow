@@ -1,6 +1,7 @@
 # WhiteShadow (Pokedex + Pokemon Info )
 
 **ScreenShot**
+
 <img src="https://www.linkpicture.com/q/WhatsApp-Image-2023-03-20-at-19.38.01.jpeg" width="50%" height="50%">
 
 ## Build Versions and Configurations
