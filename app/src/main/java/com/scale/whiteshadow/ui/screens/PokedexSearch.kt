@@ -3,7 +3,6 @@ package com.scale.whiteshadow.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -27,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -39,7 +38,10 @@ import com.scale.whiteshadow.ui.components.PokemonGrid
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokedexSearchScreenContent(mainViewModel: MainViewModel, onClick: (pokemonInfo: PokemonInfo)-> Unit) {
+fun PokedexSearchScreenContent(
+    mainViewModel: MainViewModel,
+    onClick: (pokemonInfo: PokemonInfo) -> Unit
+) {
     val infoList by mainViewModel.pokemonInfoList.observeAsState()
 
     var textInput by remember { mutableStateOf("") }
@@ -58,7 +60,7 @@ fun PokedexSearchScreenContent(mainViewModel: MainViewModel, onClick: (pokemonIn
             Image(
                 modifier = Modifier.size(28.dp),
                 painter = painterResource(id = R.drawable.ic_pokeball),
-                contentDescription = "Pokeball icon"
+                contentDescription = stringResource(R.string.header_icon_desc)
             )
             Text(
                 modifier = Modifier.padding(start = 16.dp),
@@ -78,6 +80,7 @@ fun PokedexSearchScreenContent(mainViewModel: MainViewModel, onClick: (pokemonIn
         ) {
             TextField(
                 modifier = Modifier
+                    .fillMaxWidth()
                     .height(50.dp),
                 leadingIcon = {
                     Image(
@@ -87,7 +90,8 @@ fun PokedexSearchScreenContent(mainViewModel: MainViewModel, onClick: (pokemonIn
                 },
                 placeholder = { Text(text = "Search", color = Color.Gray, fontSize = 14.sp) },
                 shape = RoundedCornerShape(24.dp),
-                value = textInput, onValueChange = { textInput = it },
+                value = textInput,
+                onValueChange = { textInput = it },
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = Color.Black,
                     disabledTextColor = Color.Transparent,
@@ -97,19 +101,15 @@ fun PokedexSearchScreenContent(mainViewModel: MainViewModel, onClick: (pokemonIn
                     containerColor = Color.White
                 )
             )
-
-            Box(
-                modifier = Modifier
-                    .size(50.dp)
-                    .background(color = Color.White, shape = CircleShape)
-            ) {
-                Text(modifier = Modifier.align(Alignment.Center), text = "#", color = Color.Red)
-            }
         }
         if (infoList != null) {
-            PokemonGrid(modifier = Modifier.padding(top = 24.dp), pokemonList = infoList!!, onClick = { content ->
-                onClick(content)
-            })
+            PokemonGrid(
+                modifier = Modifier.padding(top = 24.dp),
+                pokemonList = infoList!!,
+                searchText = textInput,
+                onClick = { content ->
+                    onClick(content)
+                })
         }
     }
 }
