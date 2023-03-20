@@ -1,12 +1,12 @@
-# WhiteShadow (Android)
-
-## Useful Links
+# WhiteShadow (Pokedex + Pokemon Info )
 
 ## Build Versions and Configurations
 The android project is run under the following configurations
 
 **Gradle Plugin** v 7.2.2 
+
 **Gradle version** v7.3.3
+
 **JAVA** Java 8 (1.8)
 
 ## Architecture
