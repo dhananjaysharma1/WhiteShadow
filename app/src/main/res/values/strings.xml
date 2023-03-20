@@ -11,7 +11,10 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="pokeball">Pokeball icon</string>
+    <string name="pokedex">Pokedex</string>
     <string name="pokemon_image">Pokemon image</string>
+    <string name="search_placeholder">Search</string>
+    <string name="pokemon_id">#%d</string>
     <string name="about">About</string>>
     <string name="base_stats">Base Stats</string>
     <string name="header_icon_desc">Pokeball icon</string>

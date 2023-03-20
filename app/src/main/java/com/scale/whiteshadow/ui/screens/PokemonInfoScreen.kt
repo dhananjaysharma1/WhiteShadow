@@ -69,7 +69,7 @@ fun PokemonInfoScreen(content: PokemonInfo, onBackPressed: () -> Unit) {
                 Text(
                     modifier = Modifier.align(Alignment.CenterEnd),
                     fontSize = 24.sp,
-                    text = "#" + content.id,
+                    text = stringResource(id = R.string.pokemon_id, content.id),
                     color = Color.White
                 )
             }

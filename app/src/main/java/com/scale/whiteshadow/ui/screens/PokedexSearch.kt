@@ -64,7 +64,7 @@ fun PokedexSearchScreenContent(
             )
             Text(
                 modifier = Modifier.padding(start = 16.dp),
-                text = "Pokedex",
+                text = stringResource(id = R.string.pokedex),
                 fontSize = 24.sp,
                 color = Color.White,
                 fontFamily = FontFamily.Monospace,
@@ -88,7 +88,7 @@ fun PokedexSearchScreenContent(
                         contentDescription = ""
                     )
                 },
-                placeholder = { Text(text = "Search", color = Color.Gray, fontSize = 14.sp) },
+                placeholder = { Text(text = stringResource(id = R.string.search_placeholder), color = Color.Gray, fontSize = 14.sp) },
                 shape = RoundedCornerShape(24.dp),
                 value = textInput,
                 onValueChange = { textInput = it },

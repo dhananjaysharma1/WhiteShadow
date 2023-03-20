@@ -1,4 +1,4 @@
-package com.scale.whiteshadow
+package com.scale.whiteshadow.View
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.scale.whiteshadow.R
 import com.scale.whiteshadow.data.MainViewModel
 import com.scale.whiteshadow.ui.screens.PokedexSearchScreenContent
 import org.koin.androidx.viewmodel.ext.android.viewModel

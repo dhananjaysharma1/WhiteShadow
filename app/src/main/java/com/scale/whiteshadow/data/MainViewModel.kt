@@ -1,6 +1,5 @@
 package com.scale.whiteshadow.data
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +18,6 @@ class MainViewModel(
     private var infoList: MutableList<PokemonInfo> = mutableListOf()
 
     private val _pokemonList = MutableLiveData<Pokemons>()
-    val pokemonList: LiveData<Pokemons> = _pokemonList
 
     private val _pokemonInfoList = MutableLiveData<List<PokemonInfo>>()
     val pokemonInfoList: LiveData<List<PokemonInfo>> = _pokemonInfoList

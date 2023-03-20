@@ -1,4 +1,4 @@
-package com.scale.whiteshadow
+package com.scale.whiteshadow.View
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.navigation.fragment.findNavController
+import com.scale.whiteshadow.R
 import com.scale.whiteshadow.data.MainViewModel
 import com.scale.whiteshadow.ui.screens.PokemonInfoScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
