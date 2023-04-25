@@ -1,4 +1,4 @@
-package com.scale.whiteshadow.ui.screens
+package com.scale.whiteshadow.View.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -32,9 +32,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.android.material.R.drawable.ic_search_black_24
 import com.scale.whiteshadow.R
-import com.scale.whiteshadow.data.MainViewModel
-import com.scale.whiteshadow.model.PokemonInfo
-import com.scale.whiteshadow.ui.components.PokemonGrid
+import com.scale.whiteshadow.View.MainViewModel
+import com.scale.whiteshadow.data.model.PokemonInfo
+import com.scale.whiteshadow.View.ui.components.PokemonGrid
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

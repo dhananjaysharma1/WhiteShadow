@@ -1,4 +1,4 @@
-package com.scale.whiteshadow.model
+package com.scale.whiteshadow.data.model
 
 data class Pokemons(
     val count: Int,

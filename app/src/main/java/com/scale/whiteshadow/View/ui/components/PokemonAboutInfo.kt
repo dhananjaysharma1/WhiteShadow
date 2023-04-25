@@ -1,4 +1,4 @@
-package com.scale.whiteshadow.ui.components
+package com.scale.whiteshadow.View.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,7 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.scale.whiteshadow.R
-import com.scale.whiteshadow.model.PokemonInfo
+import com.scale.whiteshadow.data.model.PokemonInfo
 import java.util.Locale
 
 @Composable

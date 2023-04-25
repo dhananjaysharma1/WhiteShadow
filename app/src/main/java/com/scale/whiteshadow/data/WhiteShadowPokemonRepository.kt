@@ -1,7 +1,7 @@
 package com.scale.whiteshadow.data
 
 import com.scale.whiteshadow.data.PokemonRepository.GetPokemonResponse
-import com.scale.whiteshadow.model.PokemonInfo
+import com.scale.whiteshadow.data.model.PokemonInfo
 import java.lang.Exception
 
 class WhiteShadowPokemonRepository(

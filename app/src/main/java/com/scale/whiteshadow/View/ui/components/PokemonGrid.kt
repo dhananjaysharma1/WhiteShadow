@@ -1,11 +1,11 @@
-package com.scale.whiteshadow.ui.components
+package com.scale.whiteshadow.View.ui.components
 
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.scale.whiteshadow.model.PokemonInfo
+import com.scale.whiteshadow.data.model.PokemonInfo
 import java.util.Locale
 
 @Composable

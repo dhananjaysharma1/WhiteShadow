@@ -8,14 +8,10 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.scale.whiteshadow.R
-import com.scale.whiteshadow.data.MainViewModel
-import com.scale.whiteshadow.ui.screens.PokedexSearchScreenContent
+import com.scale.whiteshadow.View.ui.screens.PokemonInfoScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class FirstFragment : Fragment() {
+class PokemonInfoFragment : Fragment() {
 
     private val viewModel by viewModel<MainViewModel>()
 
@@ -25,12 +21,12 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-            viewModel.pokemonInfoList.observe(viewLifecycleOwner) {
+            viewModel.selectedPokemon.observe(viewLifecycleOwner) {
                 setContent {
-                    PokedexSearchScreenContent(viewModel, onClick = { pokemonInfo ->
-                        viewModel.selectedPokemon.postValue(pokemonInfo)
-                        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-                    })
+                    PokemonInfoScreen(
+                        content = it,
+                        onBackPressed = { findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment) }
+                    )
                 }
             }
         }

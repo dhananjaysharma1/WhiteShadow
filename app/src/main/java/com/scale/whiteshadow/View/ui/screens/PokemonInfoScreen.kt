@@ -1,4 +1,4 @@
-package com.scale.whiteshadow.ui.screens
+package com.scale.whiteshadow.View.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,9 +29,9 @@ import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.scale.whiteshadow.R
-import com.scale.whiteshadow.model.PokemonInfo
-import com.scale.whiteshadow.ui.components.PokemonAboutInfo
-import com.scale.whiteshadow.ui.components.PokemonStatsInfo
+import com.scale.whiteshadow.data.model.PokemonInfo
+import com.scale.whiteshadow.View.ui.components.PokemonAboutInfo
+import com.scale.whiteshadow.View.ui.components.PokemonStatsInfo
 import java.util.Locale
 
 @Composable

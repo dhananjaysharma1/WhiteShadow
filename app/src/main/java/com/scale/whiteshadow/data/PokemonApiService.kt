@@ -1,7 +1,7 @@
 package com.scale.whiteshadow.data
 
-import com.scale.whiteshadow.model.PokemonInfo
-import com.scale.whiteshadow.model.Pokemons
+import com.scale.whiteshadow.data.model.PokemonInfo
+import com.scale.whiteshadow.data.model.Pokemons
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.create

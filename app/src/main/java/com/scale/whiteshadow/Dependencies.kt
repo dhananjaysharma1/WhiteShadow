@@ -3,7 +3,7 @@ package com.scale.whiteshadow
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.scale.whiteshadow.data.MainViewModel
+import com.scale.whiteshadow.View.MainViewModel
 import com.scale.whiteshadow.data.PokemonApiService
 import com.scale.whiteshadow.data.PokemonRepository
 import com.scale.whiteshadow.data.WhiteShadowPokemonRepository

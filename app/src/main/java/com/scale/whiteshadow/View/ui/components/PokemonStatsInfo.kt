@@ -1,4 +1,4 @@
-package com.scale.whiteshadow.ui.components
+package com.scale.whiteshadow.View.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.scale.whiteshadow.model.PokemonInfo
+import com.scale.whiteshadow.data.model.PokemonInfo
 
 @Composable
 fun PokemonStatsInfo(modifier: Modifier = Modifier, content: PokemonInfo) {

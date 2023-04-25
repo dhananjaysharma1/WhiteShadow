@@ -1,4 +1,4 @@
-package com.scale.whiteshadow.ui.components
+package com.scale.whiteshadow.View.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

@@ -1,12 +1,13 @@
-package com.scale.whiteshadow.data
+package com.scale.whiteshadow.View
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.scale.whiteshadow.data.PokemonRepository
 import com.scale.whiteshadow.data.PokemonRepository.GetPokemonResponse
-import com.scale.whiteshadow.model.PokemonInfo
-import com.scale.whiteshadow.model.Pokemons
+import com.scale.whiteshadow.data.model.PokemonInfo
+import com.scale.whiteshadow.data.model.Pokemons
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
