@@ -10,10 +10,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
 class WhiteShadowApplication : Application(), LifecycleObserver, LifecycleOwner {
-    override fun getLifecycle(): Lifecycle {
-        return ProcessLifecycleOwner.get().lifecycle
-    }
-
     override fun onCreate() {
         super.onCreate()
 
@@ -22,4 +18,7 @@ class WhiteShadowApplication : Application(), LifecycleObserver, LifecycleOwner 
             modules(appModules)
         }
     }
+
+    override val lifecycle: Lifecycle
+        get() = ProcessLifecycleOwner.get().lifecycle
 }
