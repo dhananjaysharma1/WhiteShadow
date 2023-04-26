@@ -21,7 +21,7 @@ interface PokemonApiService {
     suspend fun getPokemonInfo(@Path("name") name: String): Response<PokemonInfo>
 
     @GET
-    suspend fun getNextPokemonInfo(@Url url: String?): Response<PokemonInfo>
+    suspend fun getNextPokemonInfo(@Url url: String): Response<PokemonInfo>
 
     companion object {
         fun create(retrofit: Retrofit) = retrofit.create<PokemonApiService>()

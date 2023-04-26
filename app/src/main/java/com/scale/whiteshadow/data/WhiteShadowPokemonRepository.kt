@@ -33,7 +33,7 @@ class WhiteShadowPokemonRepository(
         }
     }
 
-    override suspend fun fetchURL(url: String?): GetPokemonResponse {
+    override suspend fun fetchURL(url: String): GetPokemonResponse {
         return try {
             val data = apiService.getNextPokemonInfo(url = url).body()
             if (data is PokemonInfo) {

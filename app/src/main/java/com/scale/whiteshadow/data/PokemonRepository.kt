@@ -17,5 +17,5 @@ interface PokemonRepository {
 
     suspend fun getPokemonInfo(name: String): GetPokemonResponse
 
-    suspend fun fetchURL(url: String?): GetPokemonResponse
+    suspend fun fetchURL(url: String): GetPokemonResponse
 }
